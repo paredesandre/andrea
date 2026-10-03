@@ -9,13 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,400;1,500&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --forest: #12372a;
-      --deep: #0b2219;
-      --sage: #e1e9e2;
-      --gold: #dcb64a;
-      --paper: #f7f8f5;
+      --forest: #6d4352;
+      --deep: #4d2e3a;
+      --sage: #f1ebe2;
+      --gold: #bfa479;
+      --paper: #fcfaf6;
       --bs-body-font-family: "Work Sans", system-ui, sans-serif;
-      --bs-body-color: #1d2a24;
+      --bs-body-color: #3a3236;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--paper); }
@@ -25,26 +25,26 @@
 
     .navbar { background: var(--deep); }
     .navbar-brand { font-family: "Lora", serif; font-weight: 700; color: #fff; }
-    .navbar .nav-link { color: #b6c9bd; }
+    .navbar .nav-link { color: #e6d8db; }
     .navbar .nav-link:hover { color: #fff; }
 
     .btn-gold { background: var(--gold); color: var(--deep); font-weight: 600; border: 0; padding: .85rem 1.6rem; }
-    .btn-gold:hover, .btn-gold:focus-visible { background: #e8c565; color: var(--deep); }
-    .btn-line { border: 1px solid #5f8573; color: #fff; padding: .85rem 1.6rem; }
+    .btn-gold:hover, .btn-gold:focus-visible { background: #d0b98f; color: var(--deep); }
+    .btn-line { border: 1px solid #aa8590; color: #fff; padding: .85rem 1.6rem; }
     .btn-line:hover { background: rgba(255,255,255,.08); color: #fff; }
 
     /* Hero: a trova é o elemento central da página */
     .hero { background: var(--forest); color: #fff; padding: 5rem 0 5.5rem; }
     .hero h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); line-height: 1.1; }
-    .hero .lead { color: #c3d4c9; font-size: 1.15rem; }
+    .hero .lead { color: #eadfe1; font-size: 1.15rem; }
     .trova {
       font-family: "Lora", serif; font-style: italic; font-weight: 500;
       font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.7;
-      border: 1px solid #3f6a58; border-left: 6px solid var(--gold);
+      border: 1px solid #9a7280; border-left: 6px solid var(--gold);
       background: rgba(0,0,0,.18); padding: 2rem 2.2rem; margin: 0;
     }
     .trova span { display: block; }
-    .trova footer { font-family: "Work Sans", sans-serif; font-style: normal; font-size: .85rem; color: #a9c0b3; margin-top: 1rem; }
+    .trova footer { font-family: "Work Sans", sans-serif; font-style: normal; font-size: .85rem; color: #d8c5ca; margin-top: 1rem; }
 
     section { padding: 5rem 0; }
     .bg-sage { background: var(--sage); }
@@ -53,13 +53,13 @@
     .quote { font-family: "Lora", serif; font-style: italic; font-size: 1.45rem; line-height: 1.45; border-left: 4px solid var(--gold); padding-left: 1.25rem; }
 
     .buy { background: var(--deep); color: #fff; }
-    .format { background: var(--forest); border: 1px solid #2f5646; padding: 2rem; height: 100%; text-align: center; }
+    .format { background: var(--forest); border: 1px solid #86606d; padding: 2rem; height: 100%; text-align: center; }
     .format.featured { border-color: var(--gold); }
     .price { font-family: "Lora", serif; font-size: 2.5rem; font-weight: 700; }
-    .old { text-decoration: line-through; color: #8fab9c; margin: 0 auto; }
+    .old { text-decoration: line-through; color: #cbb3ba; margin: 0 auto; }
 
     .accordion-button:not(.collapsed) { background: var(--sage); color: var(--deep); box-shadow: none; }
-    footer.site { background: var(--deep); color: #8fab9c; padding: 2rem 0; font-size: .9rem; }
+    footer.site { background: var(--deep); color: #cbb3ba; padding: 2rem 0; font-size: .9rem; }
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
@@ -158,14 +158,14 @@
 <section id="comprar" class="buy">
   <div class="container">
     <h2 class="display-6 text-center">Escolha o seu formato</h2>
-    <p class="text-center mx-auto mt-2 mb-5" style="color:#c3d4c9">Pagamento seguro. Compre direto com a autora.</p>
+    <p class="text-center mx-auto mt-2 mb-5" style="color:#eadfe1">Pagamento seguro. Compre direto com a autora.</p>
     <div class="row g-4 justify-content-center">
       <div class="col-md-5 col-lg-4">
         <div class="format featured">
           <h3 class="h4">Livro físico</h3>
           <p class="old">R$ [00,00]</p>
           <div class="price">R$ [00,00]</div>
-          <p class="mx-auto" style="color:#c3d4c9">Exemplar impresso, enviado para todo o Brasil.</p>
+          <p class="mx-auto" style="color:#eadfe1">Exemplar impresso, enviado para todo o Brasil.</p>
           <a href="#" class="btn btn-gold w-100">Comprar livro físico</a>
         </div>
       </div>
@@ -174,7 +174,7 @@
           <h3 class="h4">E-book</h3>
           <p class="old">&nbsp;</p>
           <div class="price">R$ [00,00]</div>
-          <p class="mx-auto" style="color:#c3d4c9">Leitura imediata no celular, tablet ou computador.</p>
+          <p class="mx-auto" style="color:#eadfe1">Leitura imediata no celular, tablet ou computador.</p>
           <a href="#" class="btn btn-line w-100">Comprar e-book</a>
         </div>
       </div>

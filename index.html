@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UBT — A história da União Brasileira de Trovadores | Andréa Motta</title>
+  <meta name="description" content="Livro documentário de Andréa Motta sobre a trajetória da União Brasileira de Trovadores, seus poetas e sua contribuição para a cultura popular.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,400;1,500&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #12372a;
+      --deep: #0b2219;
+      --sage: #e1e9e2;
+      --gold: #dcb64a;
+      --paper: #f7f8f5;
+      --bs-body-font-family: "Work Sans", system-ui, sans-serif;
+      --bs-body-color: #1d2a24;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); }
+    h1, h2, h3, .serif { font-family: "Lora", Georgia, serif; font-weight: 700; }
+    p { max-width: 64ch; line-height: 1.7; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .navbar { background: var(--deep); }
+    .navbar-brand { font-family: "Lora", serif; font-weight: 700; color: #fff; }
+    .navbar .nav-link { color: #b6c9bd; }
+    .navbar .nav-link:hover { color: #fff; }
+
+    .btn-gold { background: var(--gold); color: var(--deep); font-weight: 600; border: 0; padding: .85rem 1.6rem; }
+    .btn-gold:hover, .btn-gold:focus-visible { background: #e8c565; color: var(--deep); }
+    .btn-line { border: 1px solid #5f8573; color: #fff; padding: .85rem 1.6rem; }
+    .btn-line:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+    /* Hero: a trova é o elemento central da página */
+    .hero { background: var(--forest); color: #fff; padding: 5rem 0 5.5rem; }
+    .hero h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); line-height: 1.1; }
+    .hero .lead { color: #c3d4c9; font-size: 1.15rem; }
+    .trova {
+      font-family: "Lora", serif; font-style: italic; font-weight: 500;
+      font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.7;
+      border: 1px solid #3f6a58; border-left: 6px solid var(--gold);
+      background: rgba(0,0,0,.18); padding: 2rem 2.2rem; margin: 0;
+    }
+    .trova span { display: block; }
+    .trova footer { font-family: "Work Sans", sans-serif; font-style: normal; font-size: .85rem; color: #a9c0b3; margin-top: 1rem; }
+
+    section { padding: 5rem 0; }
+    .bg-sage { background: var(--sage); }
+    .fact { border-top: 3px solid var(--forest); padding-top: 1rem; height: 100%; }
+    .fact h3 { font-size: 1.25rem; }
+    .quote { font-family: "Lora", serif; font-style: italic; font-size: 1.45rem; line-height: 1.45; border-left: 4px solid var(--gold); padding-left: 1.25rem; }
+
+    .buy { background: var(--deep); color: #fff; }
+    .format { background: var(--forest); border: 1px solid #2f5646; padding: 2rem; height: 100%; text-align: center; }
+    .format.featured { border-color: var(--gold); }
+    .price { font-family: "Lora", serif; font-size: 2.5rem; font-weight: 700; }
+    .old { text-decoration: line-through; color: #8fab9c; margin: 0 auto; }
+
+    .accordion-button:not(.collapsed) { background: var(--sage); color: var(--deep); box-shadow: none; }
+    footer.site { background: var(--deep); color: #8fab9c; padding: 2rem 0; font-size: .9rem; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">UBT · Andréa Motta</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto align-items-md-center gap-md-3">
+        <li class="nav-item"><a class="nav-link" href="#livro">O livro</a></li>
+        <li class="nav-item"><a class="nav-link" href="#conteudo">Conteúdo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#autora">A autora</a></li>
+        <li class="nav-item"><a class="nav-link" href="#duvidas">Dúvidas</a></li>
+        <li class="nav-item"><a class="btn btn-gold btn-sm px-3 py-2" href="#comprar">Comprar</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <h1>A história da União Brasileira de Trovadores, contada em livro.</h1>
+        <p class="lead mt-4">Um documentário histórico de Andréa Motta sobre a trova, os poetas que a mantêm viva e a instituição que reúne quatro versos por vez.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#comprar" class="btn btn-gold btn-lg">Comprar o livro</a>
+          <a href="#livro" class="btn btn-line btn-lg">Conhecer a obra</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <blockquote class="trova">
+          <span>Cada verso que se cria</span>
+          <span>guarda um tempo, um chão, um nome;</span>
+          <span>a trova é a voz que sabia</span>
+          <span>que a palavra vence a fome.</span>
+          <footer>Trova de exemplo, em redondilha maior: quatro versos de sete sílabas.</footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="livro">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-6">
+        <h2 class="display-6">Sobre o livro</h2>
+        <p class="mt-3">Este livro reúne a memória da União Brasileira de Trovadores (UBT): como a entidade nasceu, quem passou por ela e de que forma a trova se manteve como uma das formas mais populares da poesia brasileira.</p>
+        <p>Andréa Motta organiza documentos, depoimentos e registros em uma narrativa que serve tanto a quem já escreve trovas quanto a quem quer conhecer essa tradição pela primeira vez.</p>
+      </div>
+      <div class="col-lg-6">
+        <p class="quote">“A trova cabe em quatro versos, mas carrega a história de um povo inteiro.”</p>
+        <p class="mt-4 mb-1"><strong>Para quem é este livro</strong></p>
+        <p>Trovadores e poetas, pesquisadores de literatura e cultura popular, bibliotecas, escolas e leitores que gostam de história documentada.</p>
+        <p class="mb-1"><strong>Ficha técnica</strong></p>
+        <p class="mb-0">[Nº de páginas] · [Formato] · [Editora] · ISBN [000-00-0000-000-0]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conteudo" class="bg-sage">
+  <div class="container">
+    <h2 class="display-6 mb-5">O que você vai encontrar</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3"><div class="fact"><h3>Origem e fundação</h3><p>O contexto em que a UBT surgiu e os primeiros passos da entidade.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="fact"><h3>Os trovadores</h3><p>Perfis e depoimentos de quem construiu a união ao longo dos anos.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="fact"><h3>Documentos e imagens</h3><p>Registros históricos, publicações e fotografias do acervo da entidade.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="fact"><h3>A trova hoje</h3><p>Como a tradição segue viva em concursos, encontros e novas gerações.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="autora">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-md-4">
+        <div class="ratio ratio-1x1 rounded-circle overflow-hidden" style="background:var(--forest)" role="img" aria-label="Foto de Andréa Motta (substitua pela sua)">
+          <div class="d-flex align-items-center justify-content-center serif text-white" style="font-size:4rem">AM</div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <h2 class="display-6">Andréa Motta</h2>
+        <p class="mt-3">[Escreva aqui a biografia da autora: formação, ligação com a UBT, trabalhos anteriores e prêmios.]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comprar" class="buy">
+  <div class="container">
+    <h2 class="display-6 text-center">Escolha o seu formato</h2>
+    <p class="text-center mx-auto mt-2 mb-5" style="color:#c3d4c9">Pagamento seguro. Compre direto com a autora.</p>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-5 col-lg-4">
+        <div class="format featured">
+          <h3 class="h4">Livro físico</h3>
+          <p class="old">R$ [00,00]</p>
+          <div class="price">R$ [00,00]</div>
+          <p class="mx-auto" style="color:#c3d4c9">Exemplar impresso, enviado para todo o Brasil.</p>
+          <a href="#" class="btn btn-gold w-100">Comprar livro físico</a>
+        </div>
+      </div>
+      <div class="col-md-5 col-lg-4">
+        <div class="format">
+          <h3 class="h4">E-book</h3>
+          <p class="old">&nbsp;</p>
+          <div class="price">R$ [00,00]</div>
+          <p class="mx-auto" style="color:#c3d4c9">Leitura imediata no celular, tablet ou computador.</p>
+          <a href="#" class="btn btn-line w-100">Comprar e-book</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="duvidas">
+  <div class="container" style="max-width:820px">
+    <h2 class="display-6 mb-4">Perguntas frequentes</h2>
+    <div class="accordion" id="faq">
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1" aria-expanded="true" aria-controls="f1">Preciso ser trovador para ler o livro?</button></h3>
+        <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faq"><div class="accordion-body">Não. O livro explica o que é a trova e conta a história da UBT de forma acessível para qualquer leitor.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2" aria-expanded="false" aria-controls="f2">Qual o prazo de entrega?</button></h3>
+        <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">[Informe o prazo]. O código de rastreio é enviado por e-mail.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3" aria-expanded="false" aria-controls="f3">Dá para comprar com dedicatória?</button></h3>
+        <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Dá. Escreva o nome no campo de observações do pedido e a autora autografa o exemplar.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4" aria-expanded="false" aria-controls="f4">Posso comprar para bibliotecas ou escolas?</button></h3>
+        <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Pode. Entre em contato para condições especiais de compra em quantidade.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container d-flex flex-wrap justify-content-between gap-2">
+    <span>© 2026 Andréa Motta. Todos os direitos reservados.</span>
+    <span>[seu e-mail de contato]</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

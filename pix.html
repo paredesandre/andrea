@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pagamento via Pix</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2f4f7;
+      color: #222;
+    }
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 380px;
+      margin: 16px;
+      padding: 28px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.1);
+      text-align: center;
+    }
+    h1 { margin: 0 0 4px; font-size: 22px; }
+    p.sub { margin: 0 0 20px; color: #666; font-size: 14px; }
+    #qrcode {
+      display: inline-block;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .label { margin: 20px 0 6px; font-size: 13px; color: #666; }
+    .chave {
+      padding: 10px;
+      background: #f2f4f7;
+      border-radius: 6px;
+      font-size: 15px;
+      word-break: break-all;
+    }
+    button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #32bcad;
+      color: #fff;
+    }
+    button:hover { background: #27a093; }
+    button.secundario { background: #fff; color: #27a093; border: 1px solid #32bcad; }
+    button.secundario:hover { background: #eefaf8; }
+    #aviso { min-height: 20px; margin-top: 12px; font-size: 14px; color: #27a093; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Pague com Pix</h1>
+    <p class="sub">Escaneie o QR Code ou copie a chave</p>
+    
+    <h1>Valor a pagar</h1>
+       <p id="valor">R$ 0,00</p>
+
+  <script>
+    // 1. Lê o parâmetro "valor" da URL
+    const params = new URLSearchParams(window.location.search);
+    const valor = parseFloat(params.get("valor"));
+
+    // 2. Formata como moeda brasileira
+    if (!isNaN(valor)) {
+      const formatado = valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+      document.getElementById("valor").textContent = formatado; // R$ 180,00
+    } else {
+      document.getElementById("valor").textContent = "Valor inválido";
+    }
+  </script>
+    
+    <div id="qrcode"></div>
+
+    <div class="label">Chave Pix (e-mail)</div>
+    <div class="chave" id="chave"></div>
+
+    <button onclick="copiar(CHAVE_PIX)">Copiar chave Pix</button>
+    <button class="secundario" onclick="copiar(payloadPix)">Copiar Pix Copia e Cola</button>
+
+    <div id="aviso"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    // ====== CONFIGURE AQUI ======
+    const CHAVE_PIX = "joaoandre4167@gmail.com";
+    const NOME      = "JOAO ANDRE PAREDES JUNIOR"; // sem acentos, até 25 letras
+    const CIDADE    = "CURITIBA";                  // sem acentos, até 15 letras
+
+    const parametros = new URLSearchParams(window.location.search);
+    const valorRecebido = Number(parametros.get("valor"));
+
+    const VALOR = (
+      parametros.has("valor") &&
+      Number.isFinite(valorRecebido) &&
+      valorRecebido > 0
+    )
+    ? valorRecebido.toFixed(2)
+    : "";
+    //const VALOR     = "60.00";                     // deixe "" para o pagador digitar
+    // ============================
+
+    // Monta um campo no formato do Pix: ID + tamanho (2 dígitos) + valor
+    function campo(id, valor) {
+      return id + String(valor.length).padStart(2, "0") + valor;
+    }
+
+    // Cálculo do CRC16 exigido pelo padrão Pix
+    function crc16(texto) {
+      let crc = 0xFFFF;
+      for (let i = 0; i < texto.length; i++) {
+        crc ^= texto.charCodeAt(i) << 8;
+        for (let j = 0; j < 8; j++) {
+          crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1);
+          crc &= 0xFFFF;
+        }
+      }
+      return crc.toString(16).toUpperCase().padStart(4, "0");
+    }
+
+    function gerarPayload(chave, nome, cidade) {
+      const conta = campo("00", "BR.GOV.BCB.PIX") + campo("01", chave);
+      const base =
+        campo("00", "01") +
+        campo("26", conta) +
+        campo("52", "0000") +
+        campo("53", "986") +
+        (VALOR ? campo("54", VALOR) : "") +
+        campo("58", "BR") +
+        campo("59", nome) +
+        campo("60", cidade) +
+        campo("62", campo("05", "***")) +
+        "6304";
+      return base + crc16(base);
+    }
+
+    const payloadPix = gerarPayload(CHAVE_PIX, NOME, CIDADE);
+
+    document.getElementById("chave").textContent = CHAVE_PIX;
+
+    new QRCode(document.getElementById("qrcode"), {
+      text: payloadPix,
+      width: 220,
+      height: 220,
+      correctLevel: QRCode.CorrectLevel.M
+    });
+
+    function copiar(texto) {
+      const aviso = document.getElementById("aviso");
+      const ok = () => {
+        aviso.textContent = "Copiado!";
+        setTimeout(() => aviso.textContent = "", 2000);
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(texto).then(ok);
+      } else {
+        // Alternativa para quando abrir o arquivo direto (file://)
+        const t = document.createElement("textarea");
+        t.value = texto;
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand("copy");
+        document.body.removeChild(t);
+        ok();
+      }
+    }
+  </script>
+  
+</body>
+</html>
